@@ -3,8 +3,34 @@
     <head>
         <title>{{title}}</title>
     </head>
-<body>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.4em;
+        }
 
+        h1 {
+            text-align: center;
+        }
+
+        ul li {
+            list-style: none;
+            display: inline;
+        }
+
+        .blog-entry {
+            margin: 40px;
+        }
+
+    
+    </style>
+<body>
+<ul>
+    <li><a href="/blog">Main Blog Page</a></li>
+    <li><a href="/newpost">Add a Blog Entry</a></li>
+</ul>
     {% block content %}
     {% endblock %}
 

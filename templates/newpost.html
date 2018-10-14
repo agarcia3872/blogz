@@ -1,26 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
-        <h1>TODOs</h1>
-        <form method='POST'>
-            <label>
-                New Task:
-                <input type="text" name="task"/>
-            </label>
-            <input type="submit" value="Add Task"/>
+    <div class='blog-entry'>
+        <h1>Add a blog entry</h1>
+        <form action='/newpost' method='POST'>
+                <label for="title">
+                    Title for your new blog:<br>
+                    <input type="text" name="title"/>
+                </label>
+                <br><br><br>
+                <label for="body">
+                    Your new blog:<br>
+                    <textarea name="body" rows="4" cols="30" required>
+                    </textarea>
+                    <br>
+                </label>
+                <br><br>
+                <input type="submit" value="Add Task"/>
         </form>
+    </div>
 
-        <hr />
-
-        {% if tasks|length == 0 %}
-        <p>No tasks yet</p>
-        {% else %}
-
-            <ul>
-                {% for task in tasks %}
-                <li>{{task}}</li>
-                {% endfor %}
-            </ul>
-            
-        {% endif %}
-
-{% endblock %}
+{% endblock %} 

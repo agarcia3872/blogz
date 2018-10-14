@@ -1,12 +1,15 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
-    <h2>blog listings</h2>
 
-    <ul>
-        {% for blog in completed_blogs %}
-        <li>{{blog.name}}</li>
-        {% endfor %}
-    </ul>
+<h1>Build a blog</h1>
 
-{% endblock %}task
+{% for blog in blogs %}
+<div class='blog-entry'>
+    <h2><a href='/blog/{{blog.id}}'>{{blog.title}}</a></h2>
+    <p>{{blog.body}}</p>
+</div>
+{% endfor %}
+
+
+{% endblock %}
