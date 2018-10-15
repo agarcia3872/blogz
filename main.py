@@ -50,6 +50,9 @@ def blog_listings():
 
 @app.route('/newpost', methods=['POST', 'GET'])
 def newpost():
+    title_error_message = "Please fill in the title"
+    body_error_message = "Please fill in the body"
+
     if request.method == 'POST':
         title = request.form['title']
         body = request.form['body']
@@ -59,13 +62,20 @@ def newpost():
 
         blogs = Blog.query.all()
         blogs.append(newblog)
-        
+
+        if title == "" or body == "":
+
+             return render_template('newpost.html', title=title, body=body, title_error=title_error_message,
+             body_error=body_error_message)
+
+        return redirect('/blog')
 
     return render_template('newpost.html')
 
     
-    blogs = Blog.query.all()
-    return render_template('blog.html', blogs=blogs)
+    # blogs = Blog.query.all()
+    # return render_template('blog.html', blogs=blogs)
+
 
 @app.route('/blog/<int:id>')
 def single_post(id=None):
