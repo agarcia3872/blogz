@@ -7,18 +7,18 @@
                     Title for your new blog:<br>
                     <input type="text" name="title"/>
                     {% if title_error %}
-                        <span class='error'>{{ title_error }}</span>
+                        <h5 class='error'>{{ title_error }}</h5>
                     {% endif %}
                 </label>
-                <br><br><br>
+                <br><br>
                 <label for="body">
                     Your new blog:<br>
                     <textarea name="body" rows="4" cols="30" required>
                     </textarea>
                     {% if body_error %}
-                        <span class='error'>{{ body_error }}</span>
+                        <h5 class='error'>{{ body_error }}</h5>
                     {% endif %}
-                    <br>
+                    <!-- <br> -->
                 </label>
                 <br><br>
                 <input type="submit" value="Add Task"/>
