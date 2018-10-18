@@ -5,23 +5,42 @@
     </head>
     <style>
         body {
-            padding: 0;
-            margin: 0;
-            font-family: 'Times New Roman', Times, serif;
+            padding: 10px;
+            margin: 0 auto;
+            font-family: sans-serif;
             font-size: 1.4em;
+        }
+        
+        form {
+            margin-left: 100px;
         }
 
         h1 {
-            text-align: center;
+            text-align: left;
+            margin-left: 100px;
+        }
+        
+        nav ul {
+            margin: 20px 0 20px 60px;
+            padding: 0;
+            display: inline-block;
         }
 
-        ul li {
+        nav .user-account {
+            float: right;
             list-style: none;
             display: inline;
+            text-align: right;
+        }
+
+        nav ul li {
+            list-style: none;
+            display: inline;
+            margin-right: 15px;
         }
 
         .blog-entry {
-            margin: 40px;
+            margin: 60px;
         }
         
         textarea {
@@ -34,10 +53,19 @@
     
     </style>
 <body>
-<ul>
-    <li><a href="/blog">Main Blog Page</a></li>
-    <li><a href="/newpost">Add a Blog Entry</a></li>
-</ul>
+    <nav>
+        <ul class="user-account">
+            <li><a href="/login">Login</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog">Blog List</a></li>
+            <li><a href="/newpost">Add a New Post</a></li>
+        </ul>
+
+        
+</nav>
     {% block content %}
     {% endblock %}
 

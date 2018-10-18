@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Signup</h1>
+    <form action="/signup" method="post">
+      Username: <br>
+      {% if username %}
+      <input type="text" name="username" value="{{ username }}"/>
+      {% else %}
+      <input type="text" name="username" />
+      {% endif %}
+      {% if error1 %}
+        <span class='error'>{{ error1 }}</span>
+      {% endif %}
+      <br>
+
+      Password: <br>
+      <input type="password" name="password" />
+      {% if password %}
+      getpass.getpass(prompt='Password: ', stream=None)
+      {% endif %}
+      {% if error2 %}
+        <span class='error'>{{ error2 }}</span>
+      {% endif %}
+      <br>
+
+      Verify Password:<br>
+      <input type="password" name="verify-passwd" /> 
+      {% if error3 %}
+        <span class='error'>{{ error3 }}</span>
+      {% endif %}
+      <br>
+
+      <input type="submit" value="Login">
+      <br>
+      <br>
+      {% if error4 %}
+        <span class='error'>{{ error4 }}</span>
+      {% endif %}
+
+      <!-- 
+      Email (Optional):<br>
+      {% if email %}
+      <input type="text" name="email" value="{{ email }}"/>
+      {% else %}
+      <input type="text" name="email" />
+      {% endif %}
+      {% if error4 %}
+        <span class='error'>{{ error4 }}</span>
+      {% endif %}
+      <br>
+      <input type="submit" name="submit" /> -->
+      
+    </form>
+
+
+{% endblock %}
