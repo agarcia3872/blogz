@@ -87,8 +87,7 @@ def blog_listings():
         user_id = request.args.get("user")
         user = User.query.get(user_id)
         user_blogs = Blog.query.filter_by(owner=user).all()
-        return render_template("single-user.html", page_title = user.username + "'s Posts!", 
-                                                      user_blogs=user_blogs)
+        return render_template("single-user.html", title = user.username + "'s Posts!", user_blogs=user_blogs)
     
     single_post = request.args.get("id")
 
@@ -98,7 +97,7 @@ def blog_listings():
 
     else:
         blogs = Blog.query.all()
-        return render_template('blog.html', page_title="All Blog Posts!", blogs=blogs)
+        return render_template('blog.html', title ="All Blog Posts!", blogs=blogs)
 
     
 
