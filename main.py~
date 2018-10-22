@@ -44,16 +44,15 @@ def index():
     encoded_password = request.args.get("password")
     encoded_error1 = request.args.get("error1")
     encoded_error2 = request.args.get("error2")
-        
+    
     users = User.query.all()
-    return render_template('index.html', users=users, username=encoded_username, 
+    return render_template('user-list.html', users=users, username=encoded_username, 
     password=encoded_password, error1=encoded_error1, error2=encoded_error2)
 
     # if request.method == 'POST':
     #     title = request.form['title']
     #     body = request.form['body']
-    #     owner = User.query.filter_by(username=session['username']).first()
-    #     new_blog = Blog(blog_title, blog_body, owner)
+    #     new_blog = Blog(blog_title, blog_body, user)
     #     db.session.add(new_blog)
     #     db.session.commit()
 
@@ -72,35 +71,15 @@ def index():
 @app.route('/blog', methods=['POST', 'GET'])
 def blog_listings():
     
-    # if request.method == 'POST':
-    #     title = request.form['title']
-    #     body = request.form['body']
-    #     newblog = Blog(title, body, owner)
-    #     db.session.add(newblog)
-    #     db.session.commit()
-
-    # blogs = Blog.query.all()
-    # return render_template('blog.html', blogs=blogs)
+    if request.method == 'POST':
+        title = request.form['title']
+        body = request.form['body']
+        newblog = Blog(title, body, owner)
+        db.session.add(newblog)
+        db.session.commit()
     
-
-    if "user" in request.args:
-        user_id = request.args.get("user")
-        user = User.query.get(user_id)
-        user_blogs = Blog.query.filter_by(owner=user).all()
-        return render_template("single-user.html", page_title = user.username + "'s Posts!", 
-                                                      user_blogs=user_blogs)
-    
-    single_post = request.args.get("id")
-
-    if single_post:
-        blog = Blog.query.get(single_post)
-        return render_template("single-entry.html", blog=blog)
-
-    else:
-        blogs = Blog.query.all()
-        return render_template('blog.html', page_title="All Blog Posts!", blogs=blogs)
-
-    
+    blogs = Blog.query.all()
+    return render_template('blog.html', blogs=blogs)
 
 @app.route('/newpost', methods=['POST', 'GET'])
 def newpost():
@@ -109,9 +88,9 @@ def newpost():
     body_error = "Please fill in the body"
         
     if request.method == 'POST':
+        owner = User.query.filter_by(username=session['username']).first()
         newBlog_title = request.form['title']
         body = request.form['body']
-        owner = User.query.filter_by(username=session['username']).first()
         newblog = Blog(newBlog_title, body, owner)
         db.session.add(newblog)
         db.session.commit()
@@ -136,7 +115,7 @@ def newpost():
 
 @app.before_request
 def require_login():
-    allowed_routes = ['login', 'signup','index']
+    allowed_routes = ['login', 'signup']
     if request.endpoint not in allowed_routes and "username" not in session:
         return redirect('/login')
 
@@ -204,7 +183,7 @@ def signup():
 @app.route('/logout')
 def logout():
     del session['username']
-    return redirect('/blog')
+    return redirect('/')
     
 @app.route('/single_post/<int:id>', methods=['POST', 'GET'])
 def single_post(id):

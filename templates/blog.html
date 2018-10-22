@@ -8,7 +8,7 @@
 <div class='blog-entry'>
     <h2><a href='/single_post/{{blog.id}}'>{{blog.title}}</a></h2>
     <p>{{blog.body}}</p>    
-    <p>Written by: <a href="/blog?user={{blog.owner_id}}">{{blog.owner.username}}</a></p>
+    <p><strong>Written by:</strong> <a href="/blog?user={{blog.owner_id}}">{{blog.owner.username}}</a></p>
 </div>
 {% endfor %}
 

@@ -8,20 +8,20 @@
             padding: 10px;
             margin: 0 auto;
             font-family: sans-serif;
-            font-size: 1.4em;
+            font-size: 1em;
         }
         
         form {
             margin-left: 100px;
         }
 
-        h1 {
-            text-align: left;
+        h1, h3 {
+            /* text-align: left; */
             margin-left: 100px;
         }
         
         nav ul {
-            margin: 20px 0 20px 60px;
+            margin: 20px 0 20px 100px;
             padding: 0;
             display: inline-block;
         }
@@ -31,16 +31,23 @@
             list-style: none;
             display: inline;
             text-align: right;
+            margin: 20px 100px 20px 0px;
         }
 
         nav ul li {
             list-style: none;
             display: inline;
             margin-right: 15px;
+            /* margin-left: 40px; */
         }
 
         .blog-entry {
-            margin: 60px;
+            margin-left: 100px;
+        }
+
+        .user-list {
+            /* list-style: none; */
+            margin-left: 100px;
         }
         
         textarea {
@@ -63,9 +70,8 @@
             <li><a href="/blog">Blog List</a></li>
             <li><a href="/newpost">Add a New Post</a></li>
         </ul>
+    </nav>
 
-        
-</nav>
     {% block content %}
     {% endblock %}
 

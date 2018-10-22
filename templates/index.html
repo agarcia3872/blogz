@@ -2,11 +2,11 @@
 
 {% block content %}
 
-<h3>All Users!</h3>
+<h1>All Users</h1>
 
 {% for user in users %}
 
-  <ul class="user-list">
+  <ul>
     <li><a href="/blog?user={{user.id}}">{{user.username}}</a></li>
   </ul>
 
