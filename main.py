@@ -135,7 +135,7 @@ def newpost():
 
 @app.before_request
 def require_login():
-    allowed_routes = ['login', 'signup','index']
+    allowed_routes = ['login', 'signup','index', 'blog_listings']
     if request.endpoint not in allowed_routes and "username" not in session:
         return redirect('/login')
 
@@ -190,7 +190,7 @@ def signup():
             return render_template('signup.html', error4=error4)
 
         if not existing_user:
-            new_user = User(username, password, verify_passwd)
+            new_user = User(username, password)
             db.session.add(new_user)
             db.session.commit()
             session['username'] = username
