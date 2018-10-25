@@ -2,8 +2,9 @@
 <html>
     <head>
         <title>{{title}}</title>
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     </head>
-    <style>
+    <!-- <style>
         body {
             padding: 10px;
             margin: 0 auto;
@@ -58,8 +59,9 @@
             color: red;
         }
     
-    </style>
+    </style> -->
 <body>
+    <div id="wrapper">
     <nav>
         <ul class="user-account">
             <li><a href="/login">Login</a></li>
@@ -74,6 +76,6 @@
 
     {% block content %}
     {% endblock %}
-
+    </div>
 </body>
 </html>

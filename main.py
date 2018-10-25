@@ -49,23 +49,6 @@ def index():
     return render_template('index.html', users=users, username=encoded_username, 
     password=encoded_password, error1=encoded_error1, error2=encoded_error2)
 
-    # if request.method == 'POST':
-    #     title = request.form['title']
-    #     body = request.form['body']
-    #     owner = User.query.filter_by(username=session['username']).first()
-    #     new_blog = Blog(blog_title, blog_body, owner)
-    #     db.session.add(new_blog)
-    #     db.session.commit()
-
-    
-
-    # blogs = Blog.query.filter_by(completed=False).all()
-    # completed_blogs = Blog.query.filter_by(completed=True,).all()
-
-    # return render_template('newpost.html', username=encoded_username, 
-    # password=encoded_password, error1=encoded_error1, error2=encoded_error2, 
-    # title='Blogz', blogs=blogs, completed_blogs=completed_blogs,)
-
 
 ##############################################################
 
@@ -135,7 +118,7 @@ def newpost():
 
 @app.before_request
 def require_login():
-    allowed_routes = ['login', 'signup','index', 'blog_listings']
+    allowed_routes = ['login', 'signup','index', 'blog_listings', 'static']
     if request.endpoint not in allowed_routes and "username" not in session:
         return redirect('/login')
 
